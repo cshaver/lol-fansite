@@ -1,0 +1,32 @@
+header {
+  h1 {
+    margin-bottom: 0;
+  }
+
+  .valign-wrapper {
+    height: $parallax-section-height - 64px;
+  }
+
+  nav {
+    background: rgba(0, 0, 0, 0.1);
+
+    .nebula-background {
+      height: $parallax-section-height - 64px;
+    }
+
+    ul a {
+      color: black;
+    }
+  }
+}
+
+.nebula-background {
+  background-image: url("/assets/images/medusa-nebula.jpg");
+  background-position: 0 -230px;
+  @extend .fixed-parallax;
+}
+
+.nebula-container {
+  background: black;
+  @extend .fixed-parallax-container;
+}

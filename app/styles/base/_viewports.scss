@@ -1,0 +1,36 @@
+
+$-viewports-max: (
+  tiny: 414px,
+  small: 767px,
+  medium: 1023px
+);
+
+$-viewports-min: (
+  medium: 768px,
+  large: 1024px
+);
+
+@mixin viewport($viewport) {
+  @if map-has-key($-viewports-max, $viewport) and map-has-key($-viewports-min, $viewport) {
+    $max-width: map-get($-viewports-max, $viewport);
+    $min-width: map-get($-viewports-min, $viewport);
+    @media (max-width: $max-width) and (min-width: $min-width){
+      @content;
+    }
+  }
+  @else if map-has-key($-viewports-max, $viewport) {
+    $max-width: map-get($-viewports-max, $viewport);
+    @media (max-width: $max-width){
+      @content;
+    }
+  }
+  @else if map-has-key($-viewports-min, $viewport) {
+    $min-width: map-get($-viewports-min, $viewport);
+    @media (min-width: $min-width){
+      @content;
+    }
+  }
+  @else {
+    @return warn('`#{$viewport}` does not exist');
+  }
+}

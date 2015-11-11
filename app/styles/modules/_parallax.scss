@@ -1,0 +1,48 @@
+.fixed-parallax {
+  background-attachment: fixed;
+  background-size: cover;
+  height: 400px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: $parallax-section-height;
+}
+
+.fixed-parallax-container {
+  height: $parallax-section-height;
+  position: relative;
+
+  .valign {
+    margin: 0 auto;
+  }
+
+  > * {
+    z-index: 2;
+    position: relative;
+
+    &.fixed-parallax {
+      z-index: 1;
+      position: absolute;
+    }
+  }
+}
+
+.parallax {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.parallax__layer--base {
+  transform: translateZ(0);
+}
+.parallax__layer--back {
+  transform: translateZ(-1px);
+}

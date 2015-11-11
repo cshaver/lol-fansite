@@ -1,0 +1,30 @@
+* {
+
+  &, &:after, &:before {
+    box-sizing: inherit;
+  }
+
+  & + * {
+    padding-top: 1em;
+  }
+
+  & .hidden + * {
+    padding-top: 0;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  margin: 0 auto;
+  padding: 0 5%;
+  max-width: $body-max-width;
+
+  @include viewport(medium) {
+    padding: 0 $body-padding;
+  }
+}
+
+.hidden {
+  display: none !important;
+}

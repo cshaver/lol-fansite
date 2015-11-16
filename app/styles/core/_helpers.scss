@@ -1,0 +1,26 @@
+@mixin faded-hr($color) {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: -webkit-linear-gradient(left,transparent 10%,$color 50%,transparent 90%);
+    background: linear-gradient(to right,transparent 10%,$color 50%,transparent 90%);
+  }
+}
+
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.clearfix {
+  @include clearfix();
+}

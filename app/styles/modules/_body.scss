@@ -2,81 +2,31 @@ html {
   font-family: Raleway, Calibri, Trebuchet, sans-serif;
 }
 
-h1, h2 {
-  font-family: Sail, cursive;
-}
-
-.main {
-  width: 80%;
-  padding: 1em;
-  background: white;
-  margin: 4em auto;
-}
-
 body {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  margin: 0 auto;
+  padding: 0;
+  max-width: $body-max-width;
+
   background-color: black;
   background: url('/images/space-fade.jpg') no-repeat;
   background-size: cover;
 }
 
-.hero {
-  text-align: center;
-  position: relative;
-  z-index: 1;
+.main {
+  width: 100%;
+  max-width: 1024px;
+  padding: 1em;
+  background: white;
+  margin: 4em auto;
 
-  h1 {
-    position: relative;
-    font-size: 4em;
-    // background: -webkit-linear-gradient(#F3385D,#CA2828);
-    // color: #CA2828;
-    // -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
-
-    color: #e9d6b8;
-    background: -webkit-linear-gradient(#e9d6b8 20%,#bba460 70%,#7f6c36 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    &:after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: 0 0;
-      content: attr(data-text);
-      text-align: center;
-      text-shadow: 5px 5px 14px rgba(0,0,0,.7);
-      z-index: -1;
-    }
-  }
-
-  &:after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: -webkit-linear-gradient(left,transparent 10%,#584a2b 50%,transparent 90%);
-    background: linear-gradient(to right,transparent 10%,#584a2b 50%,transparent 90%);
+  @include min-viewport(smallish) {
+    width: 90%;
   }
 }
 
-.guardian-profile {
-  width: 50%;
-  height: 50%;
-
-  .guardian-lux & {
-    background: url("/images/lux-profile.jpg");
-    background-size: 332px 632px;
-    width: 332px;
-    height: 632px;
-  }
-
-  .guardian-syndra & {
-    background: url("/images/syndra-profile.jpg");
-    background-size: 453px 612px;
-    width: 453px;
-    height: 612px;
-  }
+section {
+  z-index: 1;
+  position: relative;
 }

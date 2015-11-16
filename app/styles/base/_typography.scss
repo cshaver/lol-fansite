@@ -1,12 +1,22 @@
 
-.text-center {
-  text-align: center;
+h1, h2 {
+  font-family: Sail, cursive;
+
+  // add spans to allow even gradients for line breaks
+  span {
+    @include text-gradient-fill(swatch(pink), swatch(yellow));
+    @include text-shadow-behind();
+  }
 }
 
-.text-right {
-  text-align: right;
+h1 {
+  font-size: font-size(headline);
 }
 
-.text-left {
-  text-align: left;
+h2 {
+  font-size: font-size(subhead);
+}
+
+h2 span {
+  @include text-shadow-behind(1px 1px 2px rgba(0,0,0,0.5));
 }

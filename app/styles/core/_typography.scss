@@ -1,0 +1,139 @@
+$-default-text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+
+$-font-sizes: (
+  default: (
+    default: (
+      default: 16pt,
+      small: 10pt,
+    ),
+    headline: (
+      default: 60pt,
+    ),
+    subhead: (
+      default: 40pt,
+    ),
+  ),
+);
+
+@function font-size($level: default, $viewport: default, $theme: default) {
+  @if font-theme-exists($theme) {
+    $font-theme: map-get($-font-sizes, $theme);
+    @if font-level-exists($level, $theme) {
+      $font-level: map-get($font-theme, $level);
+      @if font-viewport-exists($viewport, $level, $theme) {
+        @return map-get($font-level, $viewport);
+      }
+      @else {
+        @return warn('#{$viewport} does not exist for #{$level} in #{$theme} theme');
+      }
+    }
+    @else {
+      @return warn('#{$level} does not exist in #{$theme} theme');
+    }
+  }
+  @else {
+    @return warn('`#{$theme}` does not exist');
+  }
+}
+
+@function font-viewport-exists($viewport, $level: default, $theme: default) {
+  @if map-has-key($-font-sizes, $theme) {
+    $font-theme: map-get($-font-sizes, $theme);
+    @if map-has-key($font-theme, $level) {
+      $font-level: map-get($font-theme, $level);
+      @if map-has-key($font-level, $viewport) {
+        @return true;
+      }
+      @else {
+        @return false;
+      }
+    }
+    @else {
+      @return false;
+    }
+  }
+  @else {
+    @return false;
+  }
+}
+
+@function font-level-exists($level, $theme: default) {
+  @if map-has-key($-font-sizes, $theme) {
+    $font-theme: map-get($-font-sizes, $theme);
+    @if map-has-key($font-theme, $level) {
+      @return true;
+    }
+    @else {
+      @return false;
+    }
+  }
+  @else {
+    @return false;
+  }
+}
+
+@function font-theme-exists($theme) {
+  @if map-has-key($-font-sizes, $theme) {
+    @return true;
+  }
+  @else {
+    @return false;
+  }
+}
+
+@mixin font-size-viewports($level: default, $theme: default) {
+  @if font-theme-exists($theme) {
+    $font-theme: map-get($-font-sizes, $theme);
+    @if font-level-exists($level, $theme) {
+      $font-level: map-get($font-theme, $level);
+
+      @each $viewport, $value in $font-level {
+        @if $viewport == 'default' {
+          font-size: $value;
+        }
+        @else {
+          @include viewport($viewport) {
+            font-size: $value;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+@mixin text-shadow-behind($shadow: $-default-text-shadow) {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: 0 0;
+    content: attr(data-text);
+    text-align: center;
+    text-shadow: $shadow;
+    z-index: -1;
+  }
+}
+
+// TODO: make the gradient more customizable
+@mixin text-gradient-fill($top, $bottom) {
+  color: $top;
+  background: -webkit-linear-gradient($top 0%, $bottom 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

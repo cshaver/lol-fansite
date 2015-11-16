@@ -1,0 +1,26 @@
+.hero {
+  z-index: 1;
+
+  $hero-offset: 5.5em;
+
+  position: relative;
+  top: -$hero-offset;
+  padding-top: $hero-offset;
+  margin-bottom: -$hero-offset;
+
+  background: url('/images/lux-weapon.png') no-repeat top right;
+  background-size: 312px 371px;
+  min-height: 372px;
+
+  h1 {
+    margin: 0;
+
+    span {
+      display: block;
+      & + span {
+        top: -32px;
+        left: -7px;
+      }
+    }
+  }
+}

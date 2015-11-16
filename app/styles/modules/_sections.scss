@@ -1,0 +1,23 @@
+.guardian-section {
+  @include clearfix;
+}
+
+.guardian-profile {
+  float: right;
+
+  @include font-size-viewports();
+
+  .guardian-lux & {
+    background: url("/images/lux-profile.jpg");
+    background-size: 332px 632px;
+    width: 332px;
+    height: 632px;
+  }
+
+  .guardian-syndra & {
+    background: url("/images/syndra-profile.jpg");
+    background-size: 453px 612px;
+    width: 453px;
+    height: 612px;
+  }
+}

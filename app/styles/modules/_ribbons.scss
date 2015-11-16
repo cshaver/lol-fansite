@@ -1,0 +1,30 @@
+.ribbon {
+  display: inline-block;
+  background-image: url('/images/ribbon-dark.png');
+  background-repeat: no-repeat;
+  background-size: 108px 72px;
+  width: 108px;
+  height: 72px;
+
+  &.pink {
+    background-image: url('/images/ribbon-pink.png');
+  }
+
+  &.blue {
+    background-image: url('/images/ribbon-blue.png');
+  }
+}
+
+.ribbon-separator {
+  border: 0;
+  margin: 0 1em;
+  background-image: url('/images/ribbon-pink-hr.jpg');
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: 444px 78px;
+  height: 78px;
+
+  &.blue {
+    background-image: url('/images/ribbon-blue-hr.jpg');
+  }
+}

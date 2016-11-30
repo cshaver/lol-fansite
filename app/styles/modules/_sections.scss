@@ -5,8 +5,6 @@
 .guardian-profile {
   float: right;
 
-  @include font-size-viewports();
-
   .guardian-lux & {
     background: url("/images/lux-profile.jpg");
     background-size: 332px 632px;

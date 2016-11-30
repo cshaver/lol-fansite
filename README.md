@@ -31,6 +31,9 @@ Support - Leona, Lulu, Lux, Annie, Karma
 Top -
 Jungle - Diana
 
+bad guys
+cosmic reaver kassadin
+
 Music:
 https://www.youtube.com/watch?time_continue=7&v=mCtwYtd6Rxs
 

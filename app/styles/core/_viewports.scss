@@ -1,3 +1,9 @@
+$-viewports: (
+  tiny,
+  small,
+  medium,
+  large
+);
 
 $-viewports-max: (
   tiny: 414px,
@@ -47,6 +53,30 @@ $-viewports-min: (
     $max-width: map-get($-viewports-max, $viewport);
     @media (max-width: $max-width){
       @content;
+    }
+  }
+}
+
+@each $viewport in $-viewports {
+  $i: index($-viewports, $viewport);
+
+  .#{$viewport} {
+    &-hide {
+      @extend .hidden;
+    }
+
+    &-only {
+      @if length($-viewports) > $i {
+        @include viewport(nth($-viewports, $i + 1)) {
+          display: none;
+        }
+      }
+
+      @if $i > 1 {
+        @include viewport(nth($-viewports, $i - 1)) {
+          display: none;
+        }
+      }
     }
   }
 }

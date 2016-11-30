@@ -8,6 +8,7 @@ import sass         from 'gulp-sass';
 import handleErrors from '../util/handleErrors';
 import browserSync  from 'browser-sync';
 import autoprefixer from 'gulp-autoprefixer';
+import lint         from 'gulp-scss-lint';
 
 gulp.task('styles', function() {
 
@@ -15,6 +16,7 @@ gulp.task('styles', function() {
 
   return gulp.src(config.styles.src)
     .pipe(gulpif(createSourcemap, sourcemaps.init()))
+    .pipe(lint())
     .pipe(sass({
       sourceComments: !global.isProd,
       outputStyle: global.isProd ? 'compressed' : 'nested',

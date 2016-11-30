@@ -1,13 +1,14 @@
-$-default-text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+$-default-text-shadow: 2px 2px 3px rgba(0,0,0,0.8);
 
 $-font-sizes: (
   default: (
     default: (
       default: 16pt,
-      small: 10pt,
     ),
     headline: (
       default: 60pt,
+      medium: 48pt,
+      small: 40pt,
     ),
     subhead: (
       default: 40pt,
@@ -127,6 +128,7 @@ $-font-sizes: (
     text-align: center;
     text-shadow: $shadow;
     z-index: -1;
+    font-weight: inherit;
   }
 }
 

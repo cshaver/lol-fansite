@@ -13,7 +13,7 @@
   }
 }
 
-@mixin clearfix() {
+%clearfix {
   &:after {
     content: "";
     display: table;
@@ -21,6 +21,22 @@
   }
 }
 
-.clearfix {
-  @include clearfix();
+@mixin clearfix() {
+  @extend %clearfix;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+@mixin nowrap() {
+  @extend .no-wrap;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+@mixin inline-block() {
+  @extend .inline-block;
 }

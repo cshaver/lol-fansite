@@ -8,9 +8,15 @@
   padding-top: $hero-offset;
   margin-bottom: -$hero-offset;
 
-  background: url('/images/lux-weapon.png') no-repeat top right;
+  background: url('/images/lux-weapon.png') no-repeat;
+  background-position: 80% top;
   background-size: 312px 371px;
   min-height: 372px;
+
+  @include viewport(small) {
+    @include faded-hr(swatch(pink));
+    min-height: 0;
+  }
 
   h1 {
     margin: 0;
@@ -18,7 +24,7 @@
     span {
       display: block;
       & + span {
-        top: -32px;
+        top: -0.4em;
         left: -7px;
       }
     }
